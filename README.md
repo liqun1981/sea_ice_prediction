@@ -34,7 +34,7 @@ nao:  https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/norm.nao.monthly.
 nino: https://www.esrl.noaa.gov/psd/gcos_wgsp/Timeseries/Data/nino34.long.anom.data
 ao:   https://www.esrl.noaa.gov/psd/data/correlation/ao.data
 co2:  ftp://aftp.cmdl.noaa.gov/products/trends/co2/co2_mm_mlo.txt 
-SIC:
+SIC:  ftp://sidads.colorado.edu/pub/DATASETS/NOAA/G10010/G10010_SIBT1850_v1.1.zip
 
 ```
 
@@ -43,11 +43,11 @@ SIC:
 We would like to regress the SIC from climate modes, not forgetting the location and time features (seasonality).
 
 Will it help us to create a model using all loations in the model? 
-if we create one model for all locations features will lose their meaning in prediction since they are the same for all locations at a certain timestamp.
+If we create one model for all locations, features (e.g. AO index) will lose their meaning in prediction since they are the same for all locations at a certain timestamp. But, we can construct clusters of areas with similar behavior (SIC values) and use within cluster samples to build potentially better models (future step).
 
 The idea here is not only to check how well we can regress on the large scale modes 
 of climate variability, but also to see the differential to models that don't use any of
-these features at all.
+these features at all (what is the added value).
 
 
 Models that are used are Decision Trees, Random Forest, and Gradient Boosting.
@@ -66,8 +66,10 @@ The tree-based models will enable us:
  -  Easier to explain and interpret 
  -  Typically less sensetive to outliers 
  - 	Don't require scaling of variables
- - 	Don't require de-seasonlization to treat time 
+ - 	Don't require de-seasonlization to treat time dependency
  -  Empirical strength
+
+ *** Why not? we don't have a lot of data ! so we might have a problem of over-fitting with these models or prediction problems based on too small sub-sample.
 
 
 ## Future steps
@@ -88,6 +90,8 @@ Create auto-correllation for each combination of lat/lon values (or area) and ad
 - Explore further seasonality - add more features like quantiles/ median etc.
 
 - It might be useful to think also about spatial location: perhaps close locations can tell us somethin about current location.
+
+- Explore multiple regression models.
 
 - Explore auto-regressive models.
 
