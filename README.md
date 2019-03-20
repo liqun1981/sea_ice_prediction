@@ -1,5 +1,5 @@
 # sea_ice_prediction
-Sea ice concentration prediction using large scale modes of climate variability
+Sea ice concentration prediction (regression) using large scale modes of climate variability
 
 ## Setup and execution 
 Download data from 'Data' section below and then see setup.md file 
@@ -60,7 +60,7 @@ For details see for example:
 
 Why these models ? 
 
-The tree-based models will enable us:
+The regression tree-based models will enable us:
  -  No assumptions on the data distribution (only heuristic of mse loss when splitting tree)
  -  Treat both the features(e.g. CO2) and the seasonality (e.g. last 3 months avg.) - we would like to have both.
  -  Easier to explain and interpret 
